@@ -111,7 +111,10 @@ function multiply(n1,n2){
 function divide(n1,n2){
     if(n1 === 0 || n2 === 0){
         console.log("Cannot Div By 0");
-        return "Cannot Div by 0";
+        screenData.textContent = '0 not divisable';
+        setTimeout(()=>{
+            clearScreen();
+        },1000);
     }else{
         console.log(n1/n2);
         updateScreen(n1 / n2);
