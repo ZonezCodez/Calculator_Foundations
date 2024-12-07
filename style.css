@@ -43,17 +43,23 @@ body {
     margin-right: 5px;
     font-size: 42px;
     padding: 10px;
-    background-color: aliceblue;
+    background-color: black;
+    border: solid 1px red;
+    color: white;
     text-align: center;
 }
 
 .calcInside:hover {
-    background-color: aqua;
+    background-color: red;
     cursor: pointer;
 }
 
 #aClear {
     width: 40%;
+}
+
+#screen {
+    color: black;
 }
 
 #equals {
