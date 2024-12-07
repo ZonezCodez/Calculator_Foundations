@@ -138,6 +138,8 @@ function keyInput(data){
     let numeros = screenData.textContent.split(' ');
     if(numeros[2] && data === ' = '){
         return operate(parseFloat(numeros[0]),parseFloat(numeros[2]),numeros[1]);
+    }else if(!numeros[0] && data === ' = ' || !numeros[2] && data === ' = '){
+        return;
     }
     if(screenData.textContent === '' && data === ' / ' || screenData.textContent === '' && data === ' * ' || screenData.textContent === '' && data === ' - ' || screenData.textContent === '' && data === ' + '){
         return 'Need a first number before equation.'
