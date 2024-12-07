@@ -140,7 +140,7 @@ function operate(n1,n2,fn){
 function clearScreen(){
     return screenData.textContent = "";    
 }
-// This function handles key inputs
+// This function handles key input
 function keyInput(data){
     let numeros = screenData.textContent.split(' ');
     if(numeros[2] && data === ' = '){
