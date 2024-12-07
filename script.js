@@ -4,7 +4,10 @@
 let screenData = document.getElementById('screen');
 const clearKey = document.getElementById('aClear');
 const divideKey = document.getElementById('division');
+const multiplyKey = document.getElementById('multiply');
 const sevenKey = document.getElementById('seven');
+const eightKey = document.getElementById('eight');
+const nineKey = document.getElementById('nine');
 
 // Event Handlers below
 // This event handler handles the clearKey which when pressed will call the clearAll function to clear the screen.
@@ -16,9 +19,22 @@ divideKey.addEventListener('click',(e) => {
     return keyInput(' / ');
 })
 
+multiplyKey.addEventListener('click', (e)=>{
+    return keyInput(' * ');
+})
+
 sevenKey .addEventListener('click', (e) => {
     return keyInput('7');
 })
+
+eightKey.addEventListener('click',(e)=>{
+    return keyInput('8')
+})
+
+nineKey.addEventListener('click',(e)=>{
+    return keyInput('9');
+})
+
 // Functions
 // This function will handle adding two NUMBERS given to it.
 function addition(n1,n2){
@@ -63,12 +79,13 @@ function clearScreen(){
 }
 // This function handles key inputs
 function keyInput(data){
-    if(screenData.textContent === '' && data === '/' || data === '+' || data === '-' || data === '*'){
+    let numeros = screenData.textContent.split(' ');
+    if(screenData.textContent === '' && data === ' / ' || screenData.textContent === '' && data === ' * ' || screenData.textContent === '' && data === ' - ' || screenData.textContent === '' && data === ' + '){
         return 'Need a first number before equation.'
-    }else if(screenData.textContent.includes('+') || screenData.textContent.includes('-') || screenData.textContent.includes('*') || screenData.textContent.includes('/') && data ===' / ' || data ===' * ' || data ===' + ' || data ===' - ') {
+    }else if(numeros[2] && data === ' / ' || numeros[2] && data === ' * ' || numeros[2] && data === ' + ' || numeros[2] && data === ' - ') {
         let innerScreen = screenData.textContent.split(' ');
         operate(parseFloat(innerScreen[0]),parseFloat(innerScreen[2]),innerScreen[1]);
-        return keyInput(data);
+        keyInput(data);
     }else{
         screenData.textContent = screenData.textContent + data;
     }
