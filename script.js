@@ -5,9 +5,21 @@ let screenData = document.getElementById('screen');
 const clearKey = document.getElementById('aClear');
 const divideKey = document.getElementById('division');
 const multiplyKey = document.getElementById('multiply');
+const subtractKey = document.getElementById('subtraction');
+const addKey = document.getElementById('addition');
+const equalsKey = document.getElementById('equals');
+
 const sevenKey = document.getElementById('seven');
 const eightKey = document.getElementById('eight');
 const nineKey = document.getElementById('nine');
+const fourKey = document.getElementById('four');
+const fiveKey = document.getElementById('five');
+const sixKey = document.getElementById('six');
+const oneKey = document.getElementById('one');
+const twoKey = document.getElementById('two');
+const threeKey = document.getElementById('three');
+const zeroKey = document.getElementById('zero');
+const decimalKey = document.getElementById('period');
 
 // Event Handlers below
 // This event handler handles the clearKey which when pressed will call the clearAll function to clear the screen.
@@ -23,6 +35,18 @@ multiplyKey.addEventListener('click', (e)=>{
     return keyInput(' * ');
 })
 
+subtractKey.addEventListener('click',(e)=>{
+    return keyInput(' - ')
+})
+
+addKey.addEventListener('click',(e)=>{
+    return keyInput(' + ')
+})
+
+equalsKey.addEventListener('click',(e)=>{
+    return keyInput(' = ')
+})
+
 sevenKey .addEventListener('click', (e) => {
     return keyInput('7');
 })
@@ -33,6 +57,38 @@ eightKey.addEventListener('click',(e)=>{
 
 nineKey.addEventListener('click',(e)=>{
     return keyInput('9');
+})
+
+fourKey.addEventListener('click',(e)=>{
+    return keyInput('4');
+})
+
+fiveKey.addEventListener('click',(e)=>{
+    return keyInput('5');
+})
+
+sixKey.addEventListener('click',(e)=>{
+    return keyInput('6');
+})
+
+oneKey.addEventListener('click',(e)=>{
+    return keyInput('1');
+})
+
+twoKey.addEventListener('click',(e)=>{
+    return keyInput('2');
+})
+
+threeKey.addEventListener('click',(e)=>{
+    return keyInput('3');
+})
+
+zeroKey.addEventListener('click',(e)=>{
+    return keyInput('0');
+})
+
+decimalKey.addEventListener('click',(e)=>{
+    return keyInput('.');
 })
 
 // Functions
@@ -80,14 +136,17 @@ function clearScreen(){
 // This function handles key inputs
 function keyInput(data){
     let numeros = screenData.textContent.split(' ');
+    if(numeros[2] && data === ' = '){
+        return operate(parseFloat(numeros[0]),parseFloat(numeros[2]),numeros[1]);
+    }
     if(screenData.textContent === '' && data === ' / ' || screenData.textContent === '' && data === ' * ' || screenData.textContent === '' && data === ' - ' || screenData.textContent === '' && data === ' + '){
         return 'Need a first number before equation.'
     }else if(numeros[2] && data === ' / ' || numeros[2] && data === ' * ' || numeros[2] && data === ' + ' || numeros[2] && data === ' - ') {
         let innerScreen = screenData.textContent.split(' ');
         operate(parseFloat(innerScreen[0]),parseFloat(innerScreen[2]),innerScreen[1]);
-        keyInput(data);
+        return keyInput(data);
     }else{
-        screenData.textContent = screenData.textContent + data;
+        return screenData.textContent = screenData.textContent + data;
     }
 }
 // This funtion handles updating the screen when the number is summed.
