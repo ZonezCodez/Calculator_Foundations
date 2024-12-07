@@ -8,6 +8,7 @@ const multiplyKey = document.getElementById('multiply');
 const subtractKey = document.getElementById('subtraction');
 const addKey = document.getElementById('addition');
 const equalsKey = document.getElementById('equals');
+const backKey = document.getElementById('back');
 
 const sevenKey = document.getElementById('seven');
 const eightKey = document.getElementById('eight');
@@ -91,6 +92,9 @@ decimalKey.addEventListener('click',(e)=>{
     return keyInput('.');
 })
 
+backKey.addEventListener('click',(e)=>{
+    return backOne();
+})
 // Functions
 // This function will handle adding two NUMBERS given to it.
 function addition(n1,n2){
@@ -171,5 +175,15 @@ function updateScreen(val){
 
 function isFloat(num){
     return typeof num === 'number' && !Number.isInteger(num);
+}
+// This function will handle the backspace behavior.
+function backOne(){
+    let info = screenData.textContent;
+    let size = info.length;
+    if(size > 0){
+        return screenData.textContent = info.slice(0,-1);
+    }else{
+        return;
+    }
 }
 // Function Calls
